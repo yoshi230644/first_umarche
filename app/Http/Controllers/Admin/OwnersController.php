@@ -66,9 +66,9 @@ class OwnersController extends Controller
     {
         //$request->name
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'.Owner::class],
-            'password' => ['required', 'string', 'confirmed', 'min:8'],
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:owners',
+            'password' => 'required|string|confirmed|min:8',
         ]);
 
 
@@ -80,6 +80,7 @@ class OwnersController extends Controller
 
         return redirect()
         ->route('admin.owners.index');
+        // ->with('message','オーナー登録を実施しました。');
     }
 
     /**
